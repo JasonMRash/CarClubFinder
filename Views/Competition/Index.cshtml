@@ -1,0 +1,35 @@
+﻿@model IEnumerable<Competition>
+
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<div class="py-5 bg-light">
+    <div class="container">
+        <div class="row row-eq-height">
+            @foreach (var item in Model)
+            {
+                <div class="col-md-4 gy-3">
+                    <div class="card h-100 mb-4 box-shadow">
+                        <div class="embed-responsive embed-responsive-16by9">
+                            <img class="card-img-top embed-responsive-item" src="@item.Image" alt ="Card image">
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">@item.Title</p>
+                            <p class="card-text">@item.Description</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                                </div>
+                                <small class="text-muted">@item.CompetitionCategory</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
