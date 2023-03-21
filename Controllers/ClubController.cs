@@ -1,6 +1,7 @@
 ﻿using CarClubWebApp.Data;
 using CarClubWebApp.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace CarClubWebApp.Controllers
 {
@@ -17,6 +18,12 @@ namespace CarClubWebApp.Controllers
         {
             List<Club> clubs = _context.Clubs.ToList();
             return View(clubs);
+        }
+
+        public IActionResult Detail(int id)
+        {
+            Club club = _context.Clubs.Include(a => a.Address).FirstOrDefault(x => x.Id == id);
+            return View(club);
         }
     }
 }
