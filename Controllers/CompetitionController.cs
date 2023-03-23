@@ -1,4 +1,5 @@
 ﻿using CarClubWebApp.Data;
+using CarClubWebApp.Interfaces;
 using CarClubWebApp.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -8,21 +9,23 @@ namespace CarClubWebApp.Controllers
     public class CompetitionController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly ICompetitionRepository _competitionRepository;
 
-        public CompetitionController(ApplicationDbContext context)
+        public CompetitionController(ApplicationDbContext context, ICompetitionRepository competitionRepository)
         {
             _context = context;
+            _competitionRepository = competitionRepository;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            List<Competition> competitions = _context.Competitions.ToList();
+            IEnumerable<Competition> competitions = await _competitionRepository.GetAll();
             return View(competitions);
         }
 
-        public IActionResult Detail(int id)
+        public async Task<IActionResult> Detail(int id)
         {
-            Competition competition = _context.Competitions.Include(a => a.Address).FirstOrDefault(x => x.Id == id);
+            Competition competition = await _competitionRepository.GetByIdAsync(id);
             return View(competition);
         }
     }
