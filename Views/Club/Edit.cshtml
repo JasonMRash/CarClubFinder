@@ -1,13 +1,14 @@
-﻿@using CarClubWebApp.Data.Enum
+﻿@using CarClubWebApp.Data.Enum;
 @using CarClubWebApp.ViewModels;
-@model CreateClubViewModel
+@model EditClubViewModel
 @*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
 }
 
-<form method="post" asp-action="Create" enctype="multipart/form-data">
+<form method="post" asp-action="Edit" enctype="multipart/form-data">
+    <input type="hidden" value="AddressId" id="AddressId" />
     <div class="form-group">
         <label asp-for="Title">Title</label>
         <input asp-for="Title" class="form-control" placeholder="Title">
@@ -35,7 +36,7 @@
         <input asp-for="Address.Street" class="form-control" placeholder="Street">
         <span asp-validation-for="Address.Street" class="text-danger"></span>
     </div>
-    
+
     <div class="form-group">
         <label asp-for="Address.City">City</label>
         <input asp-for="Address.City" class="form-control" placeholder="City">

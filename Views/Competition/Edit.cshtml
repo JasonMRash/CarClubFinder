@@ -1,13 +1,14 @@
-﻿@using CarClubWebApp.Data.Enum
+﻿@using CarClubWebApp.Data.Enum;
 @using CarClubWebApp.ViewModels;
-@model CreateClubViewModel
+@model EditCompetitionViewModel
 @*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
 }
 
-<form method="post" asp-action="Create" enctype="multipart/form-data">
+<form method="post" asp-action="Edit" enctype="multipart/form-data">
+    <input type="hidden" value="AddressId" id="AddressId" />
     <div class="form-group">
         <label asp-for="Title">Title</label>
         <input asp-for="Title" class="form-control" placeholder="Title">
@@ -19,23 +20,18 @@
         <span asp-validation-for="Description" class="text-danger"></span>
     </div>
     <div class="form-group">
-        <label asp-for="Website">Website</label>
-        <input asp-for="Website" class="form-control" placeholder="Website">
-        <span asp-validation-for="Website" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="ClubCategory">Club Category</label>
-        <select asp-for="ClubCategory" asp-items="@Html.GetEnumSelectList<ClubCategory>()" class="form-control">
+        <label asp-for="CompetitionCategory">Competition Category</label>
+        <select asp-for="CompetitionCategory" asp-items="@Html.GetEnumSelectList<CompetitionCategory>()" class="form-control">
             <option>--Select--</option>
         </select>
-        <span asp-validation-for="ClubCategory" class="text-danger"></span>
+        <span asp-validation-for="CompetitionCategory" class="text-danger"></span>
     </div>
     <div class="form-group">
         <label asp-for="Address.Street">Street</label>
         <input asp-for="Address.Street" class="form-control" placeholder="Street">
         <span asp-validation-for="Address.Street" class="text-danger"></span>
     </div>
-    
+
     <div class="form-group">
         <label asp-for="Address.City">City</label>
         <input asp-for="Address.City" class="form-control" placeholder="City">
