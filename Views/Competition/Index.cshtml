@@ -23,6 +23,7 @@
                                 <div class="btn-group">
                                     <a asp-controller="Competition" asp-action="Detail" asp-route-id="@item.Id" type="button" class="btn btn-sm btn-outline-secondary">View</a>
                                     <a asp-controller="Competition" asp-action="Edit" asp-route-id="@item.Id" type="button" class="btn btn-sm btn-outline-secondary">Edit</a>
+                                    <a asp-controller="Competition" asp-action="Delete" asp-route-id="@item.Id" type="button" class="btn btn-sm btn-outline-danger">Delete</a>
                                 </div>
                                 <small class="text-muted">@item.CompetitionCategory</small>
                             </div>

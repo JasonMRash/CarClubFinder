@@ -140,5 +140,28 @@ namespace CarClubWebApp.Controllers
                 return View("Edit", competitionVM);
             }
         }
+
+        public async Task<IActionResult> Delete(int id)
+        {
+            var competition = await _competitionRepository.GetByIdAsync(id);
+            if (competition == null)
+            {
+                return View("Error");
+            }
+
+            return View(competition);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        public async Task<IActionResult> DeleteClub(int id)
+        {
+            var competition = await _competitionRepository.GetByIdAsync(id);
+            if (competition == null)
+            {
+                return View("Error");
+            }
+            _competitionRepository.Delete(competition);
+            return RedirectToAction("Index");
+        }
     }
 }
