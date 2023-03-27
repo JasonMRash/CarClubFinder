@@ -4,7 +4,7 @@ namespace CarClubWebApp.ViewModels
 {
     public class LoginViewModel
     {
-        [Display(Name = "EmailAddress")]
+        [Display(Name = "Email Address")]
         [Required(ErrorMessage ="Email address is required")]
 
         public string EmailAddress { get; set; }
