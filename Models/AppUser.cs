@@ -7,7 +7,13 @@ namespace CarClubWebApp.Models
     public class AppUser : IdentityUser
     {
 
-        public int? Car { get; set; }
+        public string? Car { get; set; }
+
+        //public string? ProfileImageUrl { get; set; }
+
+        //public string? City { get; set; }
+
+        //public string? State { get; set; }
 
         [ForeignKey("Address")]
 

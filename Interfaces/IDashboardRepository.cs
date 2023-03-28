@@ -4,8 +4,8 @@ namespace CarClubWebApp.Interfaces
 {
     public interface IDashboardRepository
     {
-        Task<List<Competition>> GetAllUserCompetitions();
+        Task<IEnumerable<Competition>> GetAllUserCompetitions();
 
-        Task<List<Club>> GetAllUserClubs();
+        Task<IEnumerable<Club>> GetAllUserClubs();
     }
 }

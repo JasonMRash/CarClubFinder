@@ -4,8 +4,8 @@ namespace CarClubWebApp.ViewModels
 {
     public class DashboardViewModel
     {
-        public List<Competition> Competitions { get; set; }
+        public IEnumerable<Competition> Competitions { get; set; }
 
-        public List<Club> Clubs { get; set; }
+        public IEnumerable<Club> Clubs { get; set; }
     }
 }

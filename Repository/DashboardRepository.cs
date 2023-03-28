@@ -19,18 +19,16 @@ namespace CarClubWebApp.Repository
 
         public IHttpContextAccessor HttpContextAccessor { get; }
 
-        public async Task<List<Club>> GetAllUserClubs()
+        public async Task<IEnumerable<Club>> GetAllUserClubs()
         {
             var curUser = _httpContextAccessor.HttpContext?.User.GetUserId();
-            var userClubs = _context.Clubs.Where(c => c.AppUser.Id == curUser);
-            return userClubs.ToList();
+            return await _context.Clubs.Where(c => c.AppUser.Id == curUser).ToListAsync();
         }
 
-        public async Task<List<Competition>> GetAllUserCompetitions()
+        public async Task<IEnumerable<Competition>> GetAllUserCompetitions()
         {
             var curUser = _httpContextAccessor.HttpContext?.User.GetUserId();
-            var userCompetitions = _context.Competitions.Where(c => c.AppUser.Id == curUser);
-            return userCompetitions.ToList();
+            return await _context.Competitions.Where(c => c.AppUser.Id == curUser).ToListAsync();
         }
 
     }

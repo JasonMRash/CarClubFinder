@@ -1,0 +1,84 @@
+﻿@using CarClubWebApp.ViewModels
+@model UserDetailViewModel
+
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<!-- Page Content -->
+<div class="container">
+
+    <!-- Portfolio Item Heading -->
+    <h1 class="my-4">
+        @Model.UserName
+        <small>@Model.Location</small>
+    </h1>
+
+    <!-- Portfolio Item Row -->
+    <div class="row">
+
+        <div class="col-md-8">
+            @*<img class="img-fluid" src="@Model.Image" alt="">*@
+        </div>
+
+        <div class="col-md-4">
+            <h3 class="my-3">@Model.Car</h3>
+            <h3 class="my-3">@Model.Location</h3>
+        </div>
+
+    </div>
+    <!-- /.row -->
+    <!-- Related Clubs -->
+    <h3 class="my-4">Related Clubs</h3>
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        @foreach (var item in Model.Clubs)
+        {
+            <div class="col">
+                <div class="card shadow-sm">
+                    <img class="card-img-top" src="@item.Image" width="100%" height="225" alt="Card image cap">
+                    <div class="card-body">
+                        <p class="card-text">@item.Title</p>
+                        <p class="card-text">@item.Description</p>
+                        <p class="card-text">@item.Website</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group">
+                                <a type="btn btn-success" asp-controller="Club" asp-action="Detail" asp-route-id="@item.Id"
+                               class="btn btn-sm btn-outline-secondary">View</a>
+                            </div>
+                            <small class="text-muted">@item.ClubCategory</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    <!-- /.row -->
+    <!-- Related Competitions -->
+    <h3 class="my-4">Related competitions</h3>
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        @foreach (var item in Model.Competitions)
+        {
+            <div class="col">
+                <div class="card shadow-sm">
+                    <img class="card-img-top" src="@item.Image" width="100%" height="225" alt="Card image cap">
+                    <div class="card-body">
+                        <p class="card-text">@item.Title</p>
+                        <p class="card-text">@item.Description</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group">
+                                <a type="btn btn-success" asp-controller="Club" asp-action="Detail" asp-route-id="@item.Id"
+                               class="btn btn-sm btn-outline-secondary">View</a>
+                            </div>
+                            <small class="text-muted">@item.CompetitionCategory</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    <!-- /.row -->
+
+</div>
+<!-- /.container -->
