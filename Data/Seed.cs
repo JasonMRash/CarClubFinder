@@ -140,7 +140,7 @@ namespace CarClubWebApp.Data
                 {
                     var newAdminUser = new AppUser()
                     {
-                        UserName = "jasonrash",
+                        UserName = "app-admin",
                         Email = adminUserEmail,
                         EmailConfirmed = true,
                         Address = new Address()
@@ -148,7 +148,9 @@ namespace CarClubWebApp.Data
                             Street = "409 Morgan Ave",
                             City = "Downs",
                             State = "KS"
-                        }
+                        },
+                        City = "Downs",
+                        State = "KS"
                     };
                     await userManager.CreateAsync(newAdminUser, "Coding@1234?");
                     await userManager.AddToRoleAsync(newAdminUser, UserRoles.Admin);
@@ -170,7 +172,9 @@ namespace CarClubWebApp.Data
                             Street = "1234 Main St",
                             City = "Topeka",
                             State = "KS"
-                        }
+                        },
+                        City = "Topeka",
+                        State = "KS"
                     };
                     await userManager.CreateAsync(newAppUser, "Coding@1234?");
                     await userManager.AddToRoleAsync(newAppUser, UserRoles.User);

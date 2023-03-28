@@ -34,6 +34,7 @@ namespace CarClubWebApp.Controllers
             return View(result);
         }
 
+        [HttpGet]
         public async Task<IActionResult> Detail(string id)
         {
             var user = await _usersRepository.GetUserById(id);

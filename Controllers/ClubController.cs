@@ -83,6 +83,7 @@ namespace CarClubWebApp.Controllers
             }
             var clubVM = new EditClubViewModel
             {
+                Id= id,
                 Title = club.Title,
                 Description = club.Description,
                 Website = club.Website,

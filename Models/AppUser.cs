@@ -9,11 +9,11 @@ namespace CarClubWebApp.Models
 
         public string? Car { get; set; }
 
-        //public string? ProfileImageUrl { get; set; }
+        public string? ProfileImageUrl { get; set; }
 
-        //public string? City { get; set; }
+        public string? City { get; set; }
 
-        //public string? State { get; set; }
+        public string? State { get; set; }
 
         [ForeignKey("Address")]
 
