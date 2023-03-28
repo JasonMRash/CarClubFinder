@@ -16,5 +16,7 @@ namespace CarClubWebApp.ViewModels
         public IFormFile Image { get; set; }
 
         public CompetitionCategory CompetitionCategory { get; set; }
+
+        public string AppUserId { get; set; }
     }
 }

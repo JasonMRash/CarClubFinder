@@ -21,15 +21,15 @@ namespace CarClubWebApp.Repository
 
         public async Task<List<Club>> GetAllUserClubs()
         {
-            var curUser = _httpContextAccessor.HttpContext?.User;
-            var userClubs = _context.Clubs.Where(c => c.AppUser.Id == curUser.ToString());
+            var curUser = _httpContextAccessor.HttpContext?.User.GetUserId();
+            var userClubs = _context.Clubs.Where(c => c.AppUser.Id == curUser);
             return userClubs.ToList();
         }
 
         public async Task<List<Competition>> GetAllUserCompetitions()
         {
-            var curUser = _httpContextAccessor.HttpContext?.User;
-            var userCompetitions = _context.Competitions.Where(c => c.AppUser.Id == curUser.ToString());
+            var curUser = _httpContextAccessor.HttpContext?.User.GetUserId();
+            var userCompetitions = _context.Competitions.Where(c => c.AppUser.Id == curUser);
             return userCompetitions.ToList();
         }
 

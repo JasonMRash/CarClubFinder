@@ -14,12 +14,13 @@ namespace CarClubWebApp.Controllers
         private readonly ApplicationDbContext _context;
         private readonly ICompetitionRepository _competitionRepository;
         private readonly IPhotoService _photoService;
+        private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public CompetitionController(ApplicationDbContext context, ICompetitionRepository competitionRepository, IPhotoService photoService)
+        public CompetitionController(ICompetitionRepository competitionRepository, IPhotoService photoService, IHttpContextAccessor httpContextAccessor)
         {
-            _context = context;
             _competitionRepository = competitionRepository;
             _photoService = photoService;
+            _httpContextAccessor = httpContextAccessor;
         }
 
         public async Task<IActionResult> Index()
@@ -36,7 +37,12 @@ namespace CarClubWebApp.Controllers
 
         public IActionResult Create()
         {
-            return View();
+            var curUserId = _httpContextAccessor.HttpContext?.User.GetUserId();
+            var createCompetitionViewModel = new CreateCompetitionViewModel
+            {
+                AppUserId = curUserId,
+            };
+            return View(createCompetitionViewModel);
         }
 
         [HttpPost]
@@ -50,6 +56,7 @@ namespace CarClubWebApp.Controllers
                     Title = competitionVM.Title,
                     Description = competitionVM.Description,
                     Image = result.Url.ToString(),
+                    AppUserId = competitionVM.AppUserId,
                     Address = new Address
                     {
                         Street = competitionVM.Address.Street,

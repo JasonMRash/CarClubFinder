@@ -9,15 +9,15 @@ namespace CarClubWebApp.Controllers
 {
     public class ClubController : Controller
     {
-        private readonly ApplicationDbContext _context;
         private readonly IClubRepository _clubRepository;
         private readonly IPhotoService _photoService;
+        private readonly IHttpContextAccessor _contextAccessor;
 
-        public ClubController(ApplicationDbContext context, IClubRepository clubRepository, IPhotoService photoService)
+        public ClubController(IClubRepository clubRepository, IPhotoService photoService, IHttpContextAccessor contextAccessor)
         {
-            _context = context;
             _clubRepository = clubRepository;
             _photoService = photoService;
+            _contextAccessor = contextAccessor;
         }
 
         public async Task<IActionResult> Index()
@@ -34,7 +34,12 @@ namespace CarClubWebApp.Controllers
 
         public IActionResult Create()
         {
-            return View();
+            var curUserId = _contextAccessor.HttpContext?.User.GetUserId();
+            var createClubViewModel = new CreateClubViewModel
+            {
+                AppUserId = curUserId
+            };
+            return View(createClubViewModel);
         }
 
         [HttpPost]
@@ -49,6 +54,7 @@ namespace CarClubWebApp.Controllers
                     Description = clubVM.Description,
                     Website = clubVM.Website,
                     Image = result.Url.ToString(),
+                    AppUserId = clubVM.AppUserId,
                     Address = new Address
                     {
                         Street = clubVM.Address.Street,
