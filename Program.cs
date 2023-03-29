@@ -42,8 +42,9 @@ if (args.Length == 1 && args[0].ToLower() == "seeddata")
     //Seed.SeedData(app);
 }
 
-// Setting this to always be in Dev Mode to Debug on Azure
-app.Environment.EnvironmentName = Environments.Development;
+// Uncomment next line for Dev Mode to Debug on Azure
+// app.Environment.EnvironmentName = Environments.Development;
+
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
