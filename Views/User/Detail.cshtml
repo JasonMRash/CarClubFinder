@@ -10,22 +10,21 @@
 <!-- Page Content -->
 <div class="container">
 
-    <!-- Portfolio Item Heading -->
+    <!-- User Item Heading -->
     <h1 class="my-4">
         @Model.UserName
-        <small>@Model.Location</small>
     </h1>
 
-    <!-- Portfolio Item Row -->
+    <!-- User Item Row -->
     <div class="row">
 
-        <div class="col-md-8">
-            @*<img class="img-fluid" src="@Model.Image" alt="">*@
+        <div class="col-md-4">
+            <img src="@Model.ProfileImageUrl" width="100%" alt="">
         </div>
 
         <div class="col-md-4">
-            <h3 class="my-3">@Model.Car</h3>
-            <h3 class="my-3">@Model.Location</h3>
+            <h3 class="my-3">Current Car: @Model.Car</h3>
+            <h3 class="my-3">Location: @Model.Location</h3>
         </div>
 
     </div>

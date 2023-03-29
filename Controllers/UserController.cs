@@ -26,7 +26,10 @@ namespace CarClubWebApp.Controllers
                 {
                     Id = user.Id,
                     UserName = user.UserName,
+                    City= user.City,
+                    State= user.State,
                     Car = user.Car,
+                    ProfileImageUrl= user.ProfileImageUrl,
                 };
                 result.Add(userViewModel);
             }
@@ -44,10 +47,14 @@ namespace CarClubWebApp.Controllers
             {
                 Id = user.Id,
                 UserName = user.UserName,
+                City = user.City,
+                State = user.State,
                 Car = user.Car,
                 Competitions = userCompetitions,
-                Clubs = userClubs
+                Clubs = userClubs,
+                ProfileImageUrl= user.ProfileImageUrl,
             };
+            Console.WriteLine(userDetailViewModel.Location);
             return View(userDetailViewModel);
         }
     }

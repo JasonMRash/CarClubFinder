@@ -12,6 +12,11 @@
 <form method="post" asp-action="EditUserProfile" enctype="multipart/form-data">
     <input type="hidden" id="Id" name="Id" asp-for="Id" />
     <div class="form-group">
+        <label asp-for="UserName">Username</label>
+        <input asp-for="UserName" class="form-control" placeholder="Username">
+        <span asp-validation-for="UserName" class="text-danger"></span>
+    </div>
+    <div class="form-group">
         <label asp-for="Car">Car</label>
         <input asp-for="Car" class="form-control" placeholder="Car">
         <span asp-validation-for="Car" class="text-danger"></span>

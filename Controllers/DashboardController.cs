@@ -31,7 +31,7 @@ namespace CarClubWebApp.Controllers
             {
                 Competitions = userCompetitions,
                 Clubs = userClubs
-
+                
             };
             return View(dashboardViewModel);
         }
@@ -40,6 +40,7 @@ namespace CarClubWebApp.Controllers
         {
             user.Id = editVM.Id;
             user.Car = editVM.Car;
+            user.UserName = editVM.UserName;
             user.ProfileImageUrl = photoResult.Url.ToString();
             user.City = editVM.City;
             user.State = editVM.State;
@@ -54,6 +55,7 @@ namespace CarClubWebApp.Controllers
             {
                 Id = userId,
                 Car = user.Car,
+                UserName = user.UserName,
                 ProfileImageUrl = user.ProfileImageUrl,
                 City = user.City,
                 State = user.State,
