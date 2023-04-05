@@ -19,7 +19,16 @@
                             <tr class="">
                                 <th scope="row">
                                     <div class="media align-items-center">
-                                        <img alt="Image profile avatar" height="50" src="@user.ProfileImageUrl" class="avatar">
+                                        @{
+                                            if (user.ProfileImageUrl != null && user.ProfileImageUrl != "")
+                                            {
+                                                <img alt="Image profile avatar" height="50" src="@user.ProfileImageUrl" class="avatar">
+                                            }
+                                            else
+                                            {
+                                                <img alt="Image profile avatar" height="50" src="~/img/DefaultProfilePic.jpg" class="avatar">
+                                            }
+                                        }
                                         <div class="media-body">
                                             <span class="h6 mb-0">@user.UserName</span>
                                         </div>

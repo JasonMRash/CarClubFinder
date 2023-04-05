@@ -25,7 +25,8 @@
         @if (Model.Clubs == null || Model.Clubs.Count()== 0)
         {
             <h1 class="fw-light">
-                There are no car clubs in your area! <a asp-area="" asp-controller="Account" asp-action="Login">Login</a> and create one!
+                There are currently no car clubs in @Model.City, @Model.State<br>
+                <a asp-area="" asp-controller="Account" asp-action="Login">Login</a> and create one!
             </h1>
         }
         else
@@ -34,11 +35,8 @@
                 <div class="col">
                     <h3>Car clubs near @Model.City, @Model.State</h3>
                 </div>
-                <div class="row justify-content-center">
-                    <a asp-controller="Club" asp-action="Index" class="btn btn-primary btn-block">View All Clubs</a>
-                </div>
             </div>
-            <ul class="row feature-list feature-list-sm">
+            <div class="row feature-list feature-list-sm">
                 @foreach (var item in Model.Clubs)
                 {
                     <div class="col-12 col-md-6 col-lg-4">
@@ -51,12 +49,12 @@
                                 <p class="card-text">@item.Description</p>
                             </div>
                             <div class="card-footer card-footer-borderless d-flex justify-content-between">
-                                <a asp-controller="Club" asp-action="Detail" asp-route-id="@item.Id" class="btn btn-sm btn-primary">View</a>
+                                <a asp-controller="Club" asp-action="Detail" asp-route-id="@item.Id" class="btn btn-sm btn-outline-secondary">View</a>
                             </div>
                         </div>
                     </div>
                 }
-            </ul>
+            </div>
         }
         <!--end of row-->
     </div>
