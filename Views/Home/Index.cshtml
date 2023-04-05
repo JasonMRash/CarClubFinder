@@ -30,42 +30,31 @@
         }
         else
         {
-            <div class="row justify-content-between mb-5">
-                <div class="col-auto">
+            <div class="row justify-content-between m-3">
+                <div class="col">
                     <h3>Car clubs near @Model.City, @Model.State</h3>
                 </div>
-                <!--end of col-->
-                <div class="col-auto">
-                    <a type="btn btn-success" asp-controller="Club" asp-action="Index" class="btn btn-sm btn-outline-primary">View All Clubs</a>
+                <div class="row justify-content-center">
+                    <a asp-controller="Club" asp-action="Index" class="btn btn-primary btn-block">View All Clubs</a>
                 </div>
-                <!--end of col-->
             </div>
             <ul class="row feature-list feature-list-sm">
                 @foreach (var item in Model.Clubs)
                 {
-                    <li class="col-12 col-md-6 col-lg-4">
+                    <div class="col-12 col-md-6 col-lg-4">
                         <div class="card">
                             <a asp-controller="Club" asp-action="Detail" asp-route-id="@item.Id">
                                 <img class="card-img-top" src="@item.Image" alt="Card image cap">
                             </a>
                             <div class="card-body">
                                 <h4 class="card-title">@item.Title</h4>
-                                <p class="card-text text-body">@item.Description</p>
+                                <p class="card-text">@item.Description</p>
                             </div>
                             <div class="card-footer card-footer-borderless d-flex justify-content-between">
-                                <div class="dropup">
-                                    <a type="btn btn-success" asp-controller="Club" asp-action="Detail" asp-route-id="@item.Id" class="btn btn-sm btn-outline-secondary">View</a>
-                                    <div class="dropdown-menu dropdown-menu-sm" aria-labelledby="SidekickButton">
-                                        <a class="dropdown-item" href="#">Save</a>
-                                        <a class="dropdown-item" href="#">Share</a>
-                                        <a class="dropdown-item" href="#">Comment</a>
-                                        <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="#">Report</a>
-                                    </div>
-                                </div>
+                                <a asp-controller="Club" asp-action="Detail" asp-route-id="@item.Id" class="btn btn-sm btn-primary">View</a>
                             </div>
                         </div>
-                    </li>
+                    </div>
                 }
             </ul>
         }
